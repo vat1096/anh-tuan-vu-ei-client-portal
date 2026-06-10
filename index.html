@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portail client — Anh Tuan VU EI</title>
+  <meta name="description" content="Portail client pour prise de contact et questionnaire de satisfaction — ingénierie structure." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__topline"></div>
+    <div class="container hero__content">
+      <div>
+        <p class="eyebrow">Ingénierie structure</p>
+        <h1>Anh Tuan VU EI</h1>
+        <p class="subtitle">Béton armé · Bois · Métal · Réhabilitation · Exécution</p>
+      </div>
+      <div class="identity-card" aria-label="Informations société">
+        <span>SIRET</span>
+        <strong>10015047300013</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <aside class="sidebar" aria-label="Navigation des formulaires">
+      <button class="nav-btn active" data-target="contact">01 · Prise de contact</button>
+      <button class="nav-btn" data-target="mission">02 · Cadrage de mission</button>
+      <button class="nav-btn" data-target="satisfaction">03 · Satisfaction client</button>
+      <button class="nav-btn" data-target="mentions">04 · Mentions</button>
+      <div class="note-box">
+        <strong>Objectif</strong>
+        <p>Remplacer le PDF imprimé par un formulaire en ligne propre, avec réponses centralisées dans Google Sheets.</p>
+      </div>
+    </aside>
+
+    <section class="panel">
+      <form id="clientForm">
+        <input type="hidden" name="form_version" value="VAT_PORTAIL_CLIENT_V1" />
+
+        <section class="form-section active" id="contact">
+          <div class="section-heading">
+            <p>Formulaire 01</p>
+            <h2>Fiche de prise de contact</h2>
+            <span>Informations nécessaires pour identifier le client et préparer la facturation.</span>
+          </div>
+
+          <div class="card">
+            <h3>Société / client</h3>
+            <div class="grid-2">
+              <label>Nom de la société
+                <input name="societe" type="text" placeholder="Ex. Atelier architecture ABC" required />
+              </label>
+              <label>Nom du contact
+                <input name="contact_nom" type="text" placeholder="Nom et prénom" required />
+              </label>
+              <label>Fonction
+                <input name="fonction" type="text" placeholder="Architecte, MOA, entreprise..." />
+              </label>
+              <label>E-mail du client
+                <input name="client_email" type="email" placeholder="nom@exemple.fr" />
+              </label>
+              <label>Adresse de facturation
+                <textarea name="adresse_facturation" rows="3" placeholder="Adresse complète de facturation"></textarea>
+              </label>
+              <label>SIRET / TVA intracommunautaire
+                <input name="client_siret_tva" type="text" placeholder="SIRET ou N° TVA" />
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Projet</h3>
+            <div class="grid-2">
+              <label>Nom du projet
+                <input name="projet_nom" type="text" placeholder="Ex. Extension maison à Sèvres" required />
+              </label>
+              <label>Adresse du projet
+                <input name="projet_adresse" type="text" placeholder="Adresse du chantier" />
+              </label>
+            </div>
+
+            <fieldset>
+              <legend>Type de projet</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="type_projet" value="Construction neuve" /> Construction neuve</label>
+                <label><input type="checkbox" name="type_projet" value="Réhabilitation" /> Réhabilitation</label>
+                <label><input type="checkbox" name="type_projet" value="Extension" /> Extension</label>
+                <label><input type="checkbox" name="type_projet" value="Surélévation" /> Surélévation</label>
+                <label><input type="checkbox" name="type_projet" value="Renforcement structurel" /> Renforcement structurel</label>
+                <label><input type="checkbox" name="type_projet" value="Ouverture mur porteur" /> Ouverture dans mur porteur</label>
+                <label><input type="checkbox" name="type_projet" value="Charpente bois ou métal" /> Charpente bois / métal</label>
+                <label><input type="checkbox" name="type_projet" value="Fondation" /> Fondation</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="secondary" data-next="mission">Continuer vers le cadrage</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="mission">
+          <div class="section-heading">
+            <p>Formulaire 02</p>
+            <h2>Cadrage de mission</h2>
+            <span>Pour comprendre clairement la prestation attendue avant devis ou démarrage.</span>
+          </div>
+
+          <div class="card">
+            <h3>Prestation souhaitée</h3>
+            <fieldset>
+              <legend>Phase souhaitée</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="phase" value="Faisabilité" /> Faisabilité</label>
+                <label><input type="checkbox" name="phase" value="Avant-projet" /> Avant-projet</label>
+                <label><input type="checkbox" name="phase" value="PRO / DCE" /> PRO / DCE</label>
+                <label><input type="checkbox" name="phase" value="Exécution" /> Exécution</label>
+                <label><input type="checkbox" name="phase" value="Avis technique ponctuel" /> Avis technique ponctuel</label>
+                <label><input type="checkbox" name="phase" value="Note de calcul uniquement" /> Note de calcul uniquement</label>
+                <label><input type="checkbox" name="phase" value="Plans uniquement" /> Plans uniquement</label>
+                <label><input type="checkbox" name="phase" value="Plans + notes de calcul" /> Plans + notes de calcul</label>
+              </div>
+            </fieldset>
+
+            <label>Description de la demande
+              <textarea name="description_demande" rows="5" placeholder="Décrivez brièvement votre besoin, le contexte, les contraintes connues..."></textarea>
+            </label>
+          </div>
+
+          <div class="card">
+            <h3>Documents disponibles</h3>
+            <fieldset>
+              <legend>Pièces déjà disponibles</legend>
+              <div class="checks">
+                <label><input type="checkbox" name="documents" value="Plans architecte" /> Plans architecte</label>
+                <label><input type="checkbox" name="documents" value="Plans existants" /> Plans existants</label>
+                <label><input type="checkbox" name="documents" value="Relevé géomètre" /> Relevé géomètre</label>
+                <label><input type="checkbox" name="documents" value="Rapport de sol" /> Rapport de sol</label>
+                <label><input type="checkbox" name="documents" value="Diagnostic structure" /> Diagnostic structure</label>
+                <label><input type="checkbox" name="documents" value="Photos du site" /> Photos du site</label>
+                <label><input type="checkbox" name="documents" value="Rapport bureau de contrôle" /> Rapport bureau de contrôle</label>
+                <label><input type="checkbox" name="documents" value="CCTP / pièces marché" /> CCTP / pièces marché</label>
+                <label><input type="checkbox" name="documents" value="Aucun document" /> Aucun document pour le moment</label>
+              </div>
+            </fieldset>
+
+            <div class="grid-2">
+              <label>Date souhaitée pour les livrables
+                <input name="date_livrables" type="date" />
+              </label>
+              <label>Niveau d’urgence
+                <select name="urgence">
+                  <option value="Normal">Normal</option>
+                  <option value="Prioritaire">Prioritaire</option>
+                  <option value="Très urgent">Très urgent</option>
+                </select>
+              </label>
+              <label>Visite sur site souhaitée ?
+                <select name="visite_site">
+                  <option value="À confirmer">À confirmer</option>
+                  <option value="Oui">Oui</option>
+                  <option value="Non">Non</option>
+                </select>
+              </label>
+              <label>Interlocuteurs du projet
+                <textarea name="interlocuteurs" rows="3" placeholder="Architecte, entreprise, bureau de contrôle, MOA..."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="secondary ghost" data-next="contact">Retour</button>
+            <button type="button" class="secondary" data-next="satisfaction">Continuer vers satisfaction</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="satisfaction">
+          <div class="section-heading">
+            <p>Formulaire 03</p>
+            <h2>Questionnaire de satisfaction client</h2>
+            <span>À envoyer après la mission pour mesurer la qualité perçue et améliorer le service.</span>
+          </div>
+
+          <div class="card">
+            <h3>Évaluation de la prestation</h3>
+            <div class="grid-2">
+              <label>Compréhension du besoin
+                <select name="satisfaction_comprehension">
+                  <option value="">Non renseigné</option>
+                  <option>Très satisfait</option>
+                  <option>Satisfait</option>
+                  <option>Moyen</option>
+                  <option>Insatisfait</option>
+                </select>
+              </label>
+              <label>Clarté des échanges
+                <select name="satisfaction_echanges">
+                  <option value="">Non renseigné</option>
+                  <option>Très claire</option>
+                  <option>Claire</option>
+                  <option>Moyenne</option>
+                  <option>Pas assez claire</option>
+                </select>
+              </label>
+              <label>Qualité technique des livrables
+                <select name="satisfaction_livrables">
+                  <option value="">Non renseigné</option>
+                  <option>Très bonne</option>
+                  <option>Bonne</option>
+                  <option>Moyenne</option>
+                  <option>À améliorer</option>
+                </select>
+              </label>
+              <label>Respect des délais
+                <select name="satisfaction_delais">
+                  <option value="">Non renseigné</option>
+                  <option>Oui</option>
+                  <option>Globalement oui</option>
+                  <option>Avec un léger décalage</option>
+                  <option>Non</option>
+                </select>
+              </label>
+              <label>Note globale
+                <select name="note_globale">
+                  <option value="">Non renseigné</option>
+                  <option>10 / 10</option>
+                  <option>9 / 10</option>
+                  <option>8 / 10</option>
+                  <option>7 / 10</option>
+                  <option>6 / 10</option>
+                  <option>5 / 10 ou moins</option>
+                </select>
+              </label>
+              <label>Recommanderiez-vous ce bureau d’études ?
+                <select name="recommandation">
+                  <option value="">Non renseigné</option>
+                  <option>Oui, sans hésitation</option>
+                  <option>Oui</option>
+                  <option>Peut-être</option>
+                  <option>Non</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Retour libre</h3>
+            <label>Ce que vous avez le plus apprécié
+              <textarea name="points_apprecies" rows="4"></textarea>
+            </label>
+            <label>Les points à améliorer
+              <textarea name="points_ameliorer" rows="4"></textarea>
+            </label>
+            <label>Témoignage possible
+              <textarea name="temoignage" rows="4" placeholder="Texte que vous acceptez éventuellement de partager"></textarea>
+            </label>
+            <label>Autorisation d’utilisation du témoignage
+              <select name="autorisation_temoignage">
+                <option value="Non">Non</option>
+                <option value="Oui, avec nom / société">Oui, avec mon nom / société</option>
+                <option value="Oui, anonyme">Oui, de manière anonyme</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="secondary ghost" data-next="mission">Retour</button>
+            <button type="submit" class="primary">Envoyer le formulaire</button>
+          </div>
+        </section>
+
+        <section class="form-section" id="mentions">
+          <div class="section-heading">
+            <p>Information</p>
+            <h2>Mentions et confidentialité</h2>
+            <span>Texte simple à adapter selon votre fonctionnement réel.</span>
+          </div>
+          <div class="card legal">
+            <p><strong>Responsable :</strong> Anh Tuan VU EI, SIRET 10015047300013.</p>
+            <p>Les informations transmises via ce formulaire sont utilisées uniquement pour analyser la demande, établir un devis, préparer la mission, facturer la prestation et améliorer la qualité du service.</p>
+            <p>Les réponses sont centralisées dans un tableau privé. Elles ne sont pas publiées sans accord du client.</p>
+            <p>Pour une version définitive, il est conseillé d’ajouter une politique de confidentialité conforme à votre usage réel des données.</p>
+          </div>
+          <div class="actions">
+            <button type="button" class="secondary ghost" data-next="contact">Retour au formulaire</button>
+          </div>
+        </section>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>Anh Tuan VU EI</span>
+      <span>SIRET 10015047300013</span>
+      <span>Portail client — ingénierie structure</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
