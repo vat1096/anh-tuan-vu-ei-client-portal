@@ -1,5 +1,5 @@
 // Remplacez cette valeur par l'URL de votre Google Apps Script déployé en Web App.
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYxMXAjOh41PYniKpmWMiqJ3PYWwg09EH9BdsK1qN3F6LVkXvJtaEnYG5q3zAtvbKxVA/exec";
 
 const navButtons = document.querySelectorAll(".nav-btn");
 const sections = document.querySelectorAll(".form-section");
